@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секретна місія 😎</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 550px; /* Трохи розширив контейнер для 3 картинок */
+            width: 90%;
+        }
+
+        .screen { display: none; }
+        .screen.active { 
+            display: block; 
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+
+        h1 { font-size: 26px; color: #2c3e50; margin-bottom: 15px;}
+        p { font-size: 16px; line-height: 1.5; margin-bottom: 25px;}
+        
+        .emoji { font-size: 50px; margin-bottom: 10px; }
+
+        /* Відео контейнер */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Кнопки відповідей */
+        .btn-answer {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 8px;
+            width: 80%;
+            transition: 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-answer:hover { background-color: #2980b9; transform: scale(1.05); }
+
+        .btn-start {
+            background-color: #e74c3c;
+            width: 100%;
+            margin: 0;
+        }
+        .btn-start:hover { background-color: #c0392b; }
+
+        /* Оновлена сітка для 3 подарунків */
+        .gifts-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap; /* Дозволяє карткам переноситися на новий рядок, якщо екран малий */
+            margin-bottom: 20px;
+        }
+        .gift-card {
+            flex: 1 1 30%; /* Кожна картка займає приблизно третину ширини */
+            min-width: 130px; /* Захист від того, щоб картки не стали надто вузькими на телефоні */
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 15px;
+            border: 2px solid #e0e0e0;
+            transition: 0.3s;
+        }
+        .gift-card:hover { border-color: #3498db; }
+        .gift-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .gift-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .gift-btn:hover { background-color: #27ae60; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="screen-1" class="screen active">
+            <div class="emoji">🕵️‍♂️</div>
+            <h1>Привітик, друже!</h1>
+            <p>У мене є для тебе невеличкий квіз на перевірку пам'яті. Подивимось, наскільки добре ти пам'ятаєш базу!</p>
+            <button class="btn-answer btn-start" onclick="nextScreen(2)">Гайда!</button>
+        </div>
+
+        <div id="screen-2" class="screen">
+            <h1>Питання №1 🎬</h1>
+            <p>Скільки років тому було знято цей шедевр?</p>
+            
+            <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PK3MmnlwlPE?si=MQ46HaCa5Fbc2Qcd&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
+            </div>
+
+            <button class="btn-answer" onclick="nextScreen(3)">5 років тому</button>
+            <button class="btn-answer" onclick="nextScreen(3)">12 років тому</button>
+            <button class="btn-answer" onclick="nextScreen(3)">Здається, вчора</button>
+        </div>
+
+        <div id="screen-3" class="screen">
+            <div class="emoji">🤔</div>
+            <h1>Питання №2</h1>
+            <p>А хто взагалі на цьому відео є?</p>
+            
+            <button class="btn-answer" onclick="nextScreen(4)">Я і ти</button>
+            <button class="btn-answer" onclick="nextScreen(4)">Якісь рандомні люди</button>
+            <button class="btn-answer" onclick="nextScreen(4)">Тимофійко, Тарасик, рандомний</button>
+        </div>
+
+        <div id="screen-4" class="screen">
+            <div class="emoji">🎁</div>
+            <h1>Фінальне питання!</h1>
+            <p>Ти пройшов тест! А тепер найголовніше: який з цих подарунків тобі зараз більше до душі?</p>
+            
+            <form action="https://formspree.io/f/mbdpyzdz" method="POST">
+                <input type="hidden" name="Брат вибрав" value="Результат квізу">
+                
+                <div class="gifts-grid">
+                    <div class="gift-card">
+                        <img src="окуляри3.jpg" alt="Подарунок 1">
+                        <button type="submit" name="Вибір" value="Подарунок №1" class="gift-btn">Обираю це!</button>
+                    </div>
+
+                    <div class="gift-card">
+                        <img src="окуляри2.jpg" alt="Подарунок 2">
+                        <button type="submit" name="Вибір" value="Подарунок №2" class="gift-btn">Ні, краще це!</button>
+                    </div>
+
+                    <div class="gift-card">
+                        <img src="окуляри.jpg" alt="Подарунок 3">
+                        <button type="submit" name="Вибір" value="Подарунок №3" class="gift-btn">Або ось це!</button>
+                    </div>
+                </div>
+            </form>
+            <p style="font-size: 12px; color: #7f8c8d;">Обирай серцем, я нікому не скажу 🤫</p>
+        </div>
+
+    </div>
+
+    <script>
+        function nextScreen(screenNumber) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById('screen-' + screenNumber).classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
