@@ -191,9 +191,8 @@
     </div>
 
     <script>
-        // Функція, яка "вистрілює" стікерами
         function shootEmojis(emojis) {
-            const amount = 20; // Кількість стікерів
+            const amount = 20;
             for (let i = 0; i < amount; i++) {
                 const sticker = document.createElement('div');
                 sticker.innerText = emojis[Math.floor(Math.random() * emojis.length)];
@@ -207,7 +206,6 @@
                 sticker.style.transform = 'translate(-50%, -50%) scale(0.5)';
                 document.body.appendChild(sticker);
 
-                // Запускаємо розліт у різні боки
                 setTimeout(() => {
                     const angle = Math.random() * Math.PI * 2;
                     const distance = Math.random() * 250 + 100; 
@@ -218,7 +216,6 @@
                     sticker.style.opacity = '0';
                 }, 10);
 
-                // Прибираємо їх, щоб не зависали
                 setTimeout(() => sticker.remove(), 1000);
             }
         }
@@ -230,15 +227,12 @@
             document.getElementById('screen-' + screenNumber).classList.add('active');
             window.scrollTo(0,0);
 
-            // --- АНІМАЦІЇ НА КОЖЕН ЕКРАН ---
             if (screenNumber === 2) {
                 shootEmojis(['🚀', '👀', '🔥', '✨']);
             } else if (screenNumber === 3) {
-                // Додав трохи тематичних стікерів спеціально для брата 😉
                 shootEmojis(['🎸', '🦷', '🤘', '😎']); 
             } else if (screenNumber === 4) {
-                // ФІНАЛ: Запускаємо оплески по всьому екрану!
-                var duration = 5 * 1000; // Салют триватиме 5 секунд
+                var duration = 5 * 1000;
                 var end = Date.now() + duration;
                 var scalar = 2;
                 var clap = confetti.shapeFromText({ text: '👏', scalar });
